@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+import java.util.Set;
+
 import static com.kalptree.healthtab.constant.Constants.*;
 
 @Entity
@@ -35,4 +37,7 @@ public class Doctor {
     @OneToOne
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private Users userId;
+
+    @OneToMany(mappedBy = "doctorId")
+    private Set<DoctorDegree> doctorDegree;
 }
