@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 import static com.kalptree.healthtab.constant.Constants.*;
@@ -40,4 +41,10 @@ public class Doctor {
 
     @OneToMany(mappedBy = "doctorId")
     private Set<DoctorDegree> doctorDegree;
+
+    @ManyToMany
+    private Set<Clinic> clinics;
+
+    @OneToMany(mappedBy = "doctorId")
+    private List<Appointment> appointments;
 }

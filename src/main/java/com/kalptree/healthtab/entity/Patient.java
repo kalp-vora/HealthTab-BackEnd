@@ -3,6 +3,8 @@ package com.kalptree.healthtab.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -26,4 +28,7 @@ public class Patient {
     @OneToOne
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private Users userId;
+
+    @OneToMany(mappedBy = "patientId")
+    private List<Appointment> appointments;
 }
